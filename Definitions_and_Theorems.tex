@@ -116,6 +116,10 @@ The resulting seven-dimensional vectors are called \textit{code words.} See Tabl
 \begin{definition}{Hamming Distance, Hamming Weight}\\The \textit{Hamming distance} between two vectors of a vector space is the number of components in which they differ. The \textit{Hamming weight} of a vector is the number of nonzero components of the vector.\\ We will use $d(u,v)$ to denote the Hamming distance between the vectors $u$ and $v$ and wt$(u)$ for the Hamming weight of the vector $u$.
 \end{definition}
 
+\begin{definition}{Nearest-Neighbor Decoding}\\
+  For any received vector $v$, the corresponding code word sent is a code word $v'$ such that the Hamming distance $d(v,v')$ is a minimum.
+\end{definition}
+
 \begin{theorem}{Properties of Hamming Distance and Hamming Weight}\\
 For any vectors $u,v$ and $w$ of a linear code, $d(u,v)\leq d(u,w)+d(w,v)$ and $d(u,v)=wt(u-v)$.
 \end{theorem}
@@ -123,6 +127,13 @@ For any vectors $u,v$ and $w$ of a linear code, $d(u,v)\leq d(u,w)+d(w,v)$ and $
 \begin{theorem}{Correcting Capability of a Linear Code}\\
 If the Hamming weight of every nonzero code word in a linear code is at least $2t+1$, then the code can correct for any $t$ or fewer errors. Furthermore, the same code can detect any $2t$ or fewer errors..
 \end{theorem}
+
+\begin{proof}
+  Using the nearest-neighbor decoding, suppose a transmitted code word $u$ is received as the vector $v$ and at most $t$ errors were made in transmission. Then, by definition, $d(v,u)\leq t$. If $w$ is any code word other than $u$, then $w-u$ is a nonzero code word. Thus, by assumption,
+  \[2t+1 \leq \text{wt}(w-u) = d(w,u) \leq d(w,v) + d(v,u) \;eq d(w,v) + t\]
+  and it follows that $t+1 \leq d(w,v).$ So the code word closest to the received vector $v$ is $u$ and, therefore $v$ is correctly decoded as u.\\
+  To show that the code can detect $2t$ errors, we suppose a transmitted code word $u$ is received as the vector $v$ and at least one error, but no more than $2t$ errors, was made in transmission. Because only code words are transmitted, an error will be detected whenever a received word is not a code word. But, $u$ cannot be a code word, since $d(v,u) \leq 2t$, while we know that the minimum distance between distinct code words is at least $2t+1$.
+\end{proof}
 
 \begin{theorem}{Singleton Bound}\\
   Let $C$ be a code of length $n$ over and alphabet of size $q$ with minimum Hamming distance $d$. Then $|C| \leq q^{n-d+1}.$
