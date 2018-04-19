@@ -60,6 +60,7 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\I}{\mathbb{I}}
 \newcommand{\M}{\mathbb{M}}
+\newcommand{\F}{\mathbb{F}}
 
 \setlength\parindent{0pt}
 
@@ -75,7 +76,7 @@
 over $F$. The members of $V$ are called the \textit{code words}. The ratio $k/n$ is called the \textit{information rate} of the code. When $F$ is $\Z_2$, the code is called binary.
 \end{definition}
 
-\begin{example}{The Hamming (7,4) Code.}\\
+\begin{example}{The Hamming (7,4) Code}\\
 Assuming that our message consists of all possible 4-tuples of 0's and 1's (i.e., we wish to send a sequence of 0's and 1's of length 4). Encoding will be done by viewing these messages as four-dimensional vectors over the field $\Z_2$ and multiplying each of the 16 possible messages on the right by the matrix
 \[G=\begin{bmatrix}
 1&0&0&0&0&1&1\\
@@ -112,7 +113,7 @@ The resulting seven-dimensional vectors are called \textit{code words.} See Tabl
 \end{table}
 \end{example}
 
-\begin{definition}{Hamming Distance, Hamming Weight}\\The \textit{Hamming distance} between two vectors of a vector space is the number of components in which they differ. The \textit{Hamming weight} of a vector is the umber of nonzero components of the vector.\\ We will use $d(u,v)$ to denote the Hamming distance between the vectors $u$ and $v$ and wt$(u)$ for the Hamming weight of the vector $u$.
+\begin{definition}{Hamming Distance, Hamming Weight}\\The \textit{Hamming distance} between two vectors of a vector space is the number of components in which they differ. The \textit{Hamming weight} of a vector is the number of nonzero components of the vector.\\ We will use $d(u,v)$ to denote the Hamming distance between the vectors $u$ and $v$ and wt$(u)$ for the Hamming weight of the vector $u$.
 \end{definition}
 
 \begin{theorem}{Properties of Hamming Distance and Hamming Weight}\\
@@ -122,6 +123,40 @@ For any vectors $u,v$ and $w$ of a linear code, $d(u,v)\leq d(u,w)+d(w,v)$ and $
 \begin{theorem}{Correcting Capability of a Linear Code}\\
 If the Hamming weight of every nonzero code word in a linear code is at least $2t+1$, then the code can correct for any $t$ or fewer errors. Furthermore, the same code can detect any $2t$ or fewer errors..
 \end{theorem}
+
+\begin{theorem}{Singleton Bound}\\
+  Let $C$ be a code of length $n$ over and alphabet of size $q$ with minimum Hamming distance $d$. Then $|C| \leq q^{n-d+1}.$
+\end{theorem}
+
+\begin{definition}{Maximum Distance Separable code}\\
+  A code of length $n$ over an alphabet of size $q$ with $|C| = q^k$ and minimum Hamming distance $d$ satisfying $k=n-d+1$ is said to be a Maximal Distance Separable (MDS) code.
+\end{definition}
+
+\begin{theorem}{Sphere Packing Bound}\\
+  Let $C$ be a code of length $n$ over alphabet of size $q$ with minimum Hamming distance $2t+1$. Then
+  \[|C|\left(\sum_{s=0}^t {n \choose s}(q-1)^s\right)\leq q^n\]
+\end{theorem}
+
+\begin{theorem}
+  If $C$ is a linear code over a ring $R$, the th minimum Hamming distance and the minimum Hamming weight are equal.
+\end{theorem}
+
+\begin{definition}{Generator Matrix}\\
+  A Generator Matrix is any $k\times n$ matrix $G$ whose rows forma  basis for $C$.
+\end{definition}
+
+\begin{definition}{Parity-check Matrix}\\
+  A parity-check matrix $H$ is a $(n-k)\times n$ matrix, for a $(n,k)$ code $C$, defined by \[C = \left\{x\in\F^n_q \,|\, Hx^T = 0\right\}.\] \textit{Note that $C$ is the kernel of the linear transformation $H$, because a linear code is a subspace of a vector space.}
+\end{definition}
+
+\begin{theorem}
+  If $G = [I_k \,|\, A]$ is a generator matrix for the $(n,k)$ code $C$ in standard form, then $H = [-A^T \,|\, I_{n-k}]$ is a parity check matrix for $C$.
+\end{theorem}
+
+\begin{definition}
+  Let $R$ be a finite ring. A linear code $C$ over the alphabet $R$ of length $n$ is a submodule of $R^n$.
+\end{definition}
+\textit{Note: If $R$ is a field then the linear codes are vector spaces and we have the full force of linear algebra at our disposal!}
 
 
 \end{document}
