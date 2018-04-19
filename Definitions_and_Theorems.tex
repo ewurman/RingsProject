@@ -135,7 +135,7 @@ If the Hamming weight of every nonzero code word in a linear code is at least $2
 \end{proof}
 
 \begin{theorem}{Singleton Bound}\\
-  Let $C$ be a code of length $n$ over and alphabet of size $q$ with minimum Hamming distance $d$. Then $|C| \leq q^{n-d+1}.$
+  Let $C$ be a code of length $n$ over and alphabet of size $q$ with minimum Hamming distance $d$. Then $\log_q(|C|) \leq n-d+1.$
 \end{theorem}
 
 \begin{definition}{Maximum Distance Separable code}\\
@@ -170,7 +170,7 @@ If the Hamming weight of every nonzero code word in a linear code is at least $2
 \end{definition}
 
 \begin{definition}{Parity-check Matrix}\\
-  A parity-check matrix $H$ is a $(n-k)\times n$ matrix, for a $(n,k)$ code $C$, defined by \[C = \left\{x\in\F^n_q \,|\, Hx^T = 0\right\}.\] \textit{Note that $C$ is the kernel of the linear transformation $H$, because a linear code is a subspace of a vector space.}
+  A parity-check matrix $H$ is a $(n-k)\times n$ matrix, for a $(n,k)$ code $C$, defined by \[C = \Big\{x\in\F^n_q \,|\, Hx^T = 0\Big\}.\] \textit{Note that $C$ is the kernel of the linear transformation $H$, because a linear code is a subspace of a vector space.}
 \end{definition}
 
 \begin{theorem}
