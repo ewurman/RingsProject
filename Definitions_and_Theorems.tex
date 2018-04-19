@@ -8,6 +8,7 @@
 \usepackage{tikz}
 \usepackage[plain]{algorithm}
 \usepackage{algpseudocode}
+\usepackage[labelsep=none]{caption}
 
 \usetikzlibrary{automata,positioning}
 %
@@ -37,7 +38,7 @@
 %   - Author
 %
 
-\newcommand{\hmwkTitle}{Final Project Definitions and Theorems}
+\newcommand{\hmwkTitle}{Final Project \textit{Definitions and Theorems}}
 \newcommand{\hmwkDueDate}{Spring 2018}
 \newcommand{\ClassName}{Math 3702}
 \newcommand{\hmwkAuthorName}{\textbf{Erik, Bo, Phillip}}
@@ -62,18 +63,65 @@
 
 \setlength\parindent{0pt}
 
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+
 \begin{document}
-
-Definition: \textbf{Linear Code}\\ An $(n,k)$ \textit{linear code} over a finite field $F$ is a $k$-dimensional subspace $V$ of the vector space \[F^n = \underbrace{F\oplus F\oplus \dots \oplus F}_{\text{$n$ copies}}\]
+\begin{definition}{Linear Code}\\An $(n,k)$ \textit{linear code} over a finite field $F$ is a $k$-dimensional subspace $V$ of the vector space \[F^n = \underbrace{F\oplus F\oplus \dots \oplus F}_{\text{$n$ copies}}\]
 over $F$. The members of $V$ are called the \textit{code words}. The ratio $k/n$ is called the \textit{information rate} of the code. When $F$ is $\Z_2$, the code is called binary.
+\end{definition}
 
-Definition: \textbf{Hamming Distance, Hamming Weight}\\The \textit{Hamming distance} between two vectors of a vector space is the number of components in which they differ. The \textit{Hamming weight} of a vector is the umber of nonzero components of the vector.\\ We will use $d(u,v)$ to denote the Hamming distance between the vectors $u$ and $v$ and wt$(u)$ for the Hamming weight of the vector $u$.
+\begin{example}{The Hamming (7,4) Code.}\\
+Assuming that our message consists of all possible 4-tuples of 0's and 1's (i.e., we wish to send a sequence of 0's and 1's of length 4). Encoding will be done by viewing these messages as four-dimensional vectors over the field $\Z_2$ and multiplying each of the 16 possible messages on the right by the matrix
+\[G=\begin{bmatrix}
+1&0&0&0&0&1&1\\
+0&1&0&0&1&0&1\\
+0&0&1&0&1&1&0\\
+0&0&0&1&1&1&1
+\end{bmatrix}\]
+The resulting seven-dimensional vectors are called \textit{code words.} See Table~\ref{tab:hamming(7,4)}.
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{c c c}
+        \hline
+        Message & Encoder $G$ & Code Word\\
+        \hline
+        0000 & $\rightarrow$ & 0000000 \\
+        0001 & $\rightarrow$ & 0001111 \\
+        0010 & $\rightarrow$ & 0010110 \\
+        0100 & $\rightarrow$ & 0100101 \\
+        1000 & $\rightarrow$ & 1000011 \\
+        1100 & $\rightarrow$ & 1100110 \\
+        1010 & $\rightarrow$ & 1010101 \\
+        1001 & $\rightarrow$ & 1001100 \\
+        0110 & $\rightarrow$ & 0110011 \\
+        0101 & $\rightarrow$ & 0101010 \\
+        0011 & $\rightarrow$ & 0011001 \\
+        1110 & $\rightarrow$ & 1110000 \\
+        1101 & $\rightarrow$ & 1101001 \\
+        1011 & $\rightarrow$ & 1011010 \\
+        0111 & $\rightarrow$ & 0111100 \\
+        1111 & $\rightarrow$ & 1111111 \\
+    \end{tabular}
+    \caption{}
+    \label{tab:hamming(7,4)}
+\end{table}
+\end{example}
 
-\textit{\textbf{Theorem} Properties of Hamming Distance and Hamming Weight}\\
+\begin{definition}{Hamming Distance, Hamming Weight}\\The \textit{Hamming distance} between two vectors of a vector space is the number of components in which they differ. The \textit{Hamming weight} of a vector is the umber of nonzero components of the vector.\\ We will use $d(u,v)$ to denote the Hamming distance between the vectors $u$ and $v$ and wt$(u)$ for the Hamming weight of the vector $u$.
+\end{definition}
+
+\begin{theorem}{Properties of Hamming Distance and Hamming Weight}\\
 For any vectors $u,v$ and $w$ of a linear code, $d(u,v)\leq d(u,w)+d(w,v)$ and $d(u,v)=wt(u-v)$.
+\end{theorem}
 
-\textit{\textbf{Theorem} Correcting Capability of a Linear Code}\\
+\begin{theorem}{Correcting Capability of a Linear Code}\\
 If the Hamming weight of every nonzero code word in a linear code is at least $2t+1$, then the code can correct for any $t$ or fewer errors. Furthermore, the same code can detect any $2t$ or fewer errors..
+\end{theorem}
 
 
 \end{document}
