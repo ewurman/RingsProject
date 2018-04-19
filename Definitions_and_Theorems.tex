@@ -62,5 +62,23 @@
 
 \begin{document}
 
+Definition: \textbf{Linear Code:} An $(n,k)$ \textit{linear code} over a finite field $F$ is a $k$-dimensional subspace $V$ of the vector space \[F^n = \underbrace{F\oplus F\oplus \dots \oplus F}_{\text{$n$ copies}}\]
+over $F$. The members of $V$ are called the \textit{code words}. The ratio $k/n$ is called the \textit{information rate} of the code. When $F$ is $\Z_2$, the code is called binary.
+
+Definition: \textbf{Hamming Distance, Hamming Weight:} The \textit{Hamming distance} between two vectors of a vector space is the number of components in which they differ. The \textit{Hamming weight} of a vector is the umber of nonzero components of the vector.\\ We will use $d(u,v)$ to denote the Hamming distance between the vectors $u$ and $v$ and wt$(u)$ for the Hamming weight of the vector $u$.
+
+\textit{\textbf{Theorem} Properties of Hamming Distance and Hamming Weight}\\
+\t For any vectors $u,v$ and $w$ of a linear code, $d(u,v)\leqd(u,w)+d(w,v)$ and $d(u,v)=wt(u-v)$.
+
+\textit{\textbf{Theorem} Correcting Capability of a Linear Code}\\
+\t If the Hamming weight of every nonzero code word in a linear code is at least $2t+1$, then the code can correct for any $t$ or fewer errors. Furthermore, the same code can detect any $2t$ or fewer errors..
+
 
 \end{document}
+
+
+
+
+
+
+
